@@ -142,3 +142,18 @@ exports.getUser = catchAsyncError(async (req, res, next) => {
     return next(new ErrorHandler(error.message, 500));
   }
 });
+
+exports.logout = catchAsyncError(async (req, res, next) => {
+  try {
+    res.cookies("token", null, {
+      expires: new User(Date.now()),
+      httpOnly: true,
+    });
+    res.status(201).json({
+      success: true,
+      message: "Log Out Succesfully",
+    });
+  } catch (error) {
+    return next(new ErrorHandler(error.message, 500));
+  }
+});
