@@ -17,8 +17,10 @@ app.use(
 );
 //import routes
 const user = require("./routes/userRoutes");
+const shop = require("./routes/shopRoutes.js");
 
 app.use("/api/v1/user", user);
+app.use("/api/v1/shop", shop);
 
 app.use(ErrorHandler);
 
